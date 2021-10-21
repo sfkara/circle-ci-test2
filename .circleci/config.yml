@@ -35,6 +35,12 @@ jobs:
     - run: 
         name: Run Frontend Tests
         command: npm run test:unit
+    - store_artifacts:
+          path: test-results/pytest
+          destination: pytest
+
+    - store_test_results:
+        path: test-results/pytest     
 
   backend:
     docker:
@@ -71,7 +77,7 @@ jobs:
           path: test-results/pytest
           destination: pytest
 
-      - store_test-results:
+      - store_test_results:
           path: test-results/pytest   
 workflows:
   version: 2
