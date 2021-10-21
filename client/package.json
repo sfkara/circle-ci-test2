@@ -7,10 +7,11 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
-   
+    
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "jest": "^27.3.1",
     "jest-html-reporter": "^3.4.1",
     "vue": "^2.6.11"
   },

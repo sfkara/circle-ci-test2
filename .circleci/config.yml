@@ -18,7 +18,7 @@ jobs:
       # Download and cache dependencies
     - restore_cache:
         keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
           - v1-dependencies-       
     - run:
@@ -28,16 +28,15 @@ jobs:
         paths:
           - node_modules
           - package.json
-        key:  v1-dependencies-{{ checksum "package.json" }}
+        key:  v1-dependencies-{{ checksum "package-lock.json" }}
       # run tests!
     - run: 
         name: Run Frontend Tests
         command: npm run test:unit
-    - store_artifacts:
-          path: result
-          
     - store_test_results:
-        path: result    
+        path: reports/junit
+    - store_artifacts:
+        path: reports/junit   
   backend:
     docker:
 

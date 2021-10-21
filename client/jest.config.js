@@ -9,6 +9,7 @@ module.exports = {
         },
     ],
 ],
+  moduleDirectories:["node_modules","src"]
 // collectCoverage: true,
 // collectCoverageFrom: [
 //   "<rootDir>/components/**/*.vue",
