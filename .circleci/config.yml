@@ -9,7 +9,6 @@ jobs:
       # specify the version you desire here
     - image: vuejs/ci
 
-      
     working_directory: ~/circle-ci-test2/client
 
     steps:
