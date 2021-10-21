@@ -71,7 +71,7 @@ jobs:
           name: Run Backend Tests
           command: |
             . venv/bin/activate
-            python -m pytest -v --html=server/test-results/pytest/nerveblox_test_results.html 
+            python -m pytest -v --html=test-results/pytest/nerveblox_test_results.html --junitxml="test-results/pytest/nerveblox_test_results.xml" 
       - store_artifacts:
           path: test-results/pytest
           destination: pytest
