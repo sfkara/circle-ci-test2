@@ -34,9 +34,9 @@ jobs:
         name: Run Frontend Tests
         command: npm run test:unit
     - store_test_results:
-        path: reports/junit
+        path: result
     - store_artifacts:
-        path: reports/junit   
+        path: result  
   backend:
     docker:
 
