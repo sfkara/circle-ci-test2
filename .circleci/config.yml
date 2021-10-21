@@ -27,7 +27,7 @@ jobs:
     - save_cache:
         paths:
           - node_modules
-          - package.json
+          - package-lock.json
         key:  v1-dependencies-{{ checksum "package-lock.json" }}
       # run tests!
     - run: 
