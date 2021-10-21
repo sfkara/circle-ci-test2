@@ -9,13 +9,12 @@ jobs:
       # specify the version you desire here
     - image: vuejs/ci
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-    working_directory: $CIRCLE_WORKING_DIRECTORY/client
+      
+    working_directory: ~/circle-ci-test2/client
 
     steps:
-    - checkout
+    - checkout:
+        path: ~/circle-ci-test2
 
       # Download and cache dependencies
     - restore_cache:
@@ -32,10 +31,44 @@ jobs:
           - package.json
         key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
-    - run: npm run test:unit 
+    - run: npm run test:unit
+  backend:
+    docker:
+
+    - image: circleci/python:3.8
+    working_directory: ~/circle-ci-test2/client
+    steps:
+      - checkout:
+          path: ~/circle-ci-test2
+
+      # Cache dependencies
+      - restore_cache:
+          keys:
+          - nerv-dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - nerv-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -U -r requirements.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: nerv-dependencies-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: run tests
+          command: |
+            . venv/bin/activate
+            python -m pytest --html=test-results/pytest/nerveblox_test_results.html
+      - store_artifacts:
+          path: test-results/pytest
+          destination: pytest   
 workflows:
   version: 2
   nerveblox-test:
     jobs:
       - frontend
-          
+      - backend
