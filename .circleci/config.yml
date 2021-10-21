@@ -22,7 +22,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-    - run: npm install
+    - run:
+        name: install npm 
+        command: npm install
 
     - save_cache:
         paths:
@@ -30,7 +32,10 @@ jobs:
           - package.json
         key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
-    - run: npm run test:unit
+    - run: 
+        name: Run Frontend Tests
+        command: npm run test:unit
+
   backend:
     docker:
 
@@ -58,7 +63,7 @@ jobs:
           key: nerv-dependencies-{{ checksum "requirements.txt" }}
 
       - run:
-          name: run tests
+          name: Run Backend Tests
           command: |
             . venv/bin/activate
             python -m pytest --html=test-results/pytest/nerveblox_test_results.html
