@@ -36,11 +36,11 @@ jobs:
         name: Run Frontend Tests
         command: npm run test:unit
     - store_artifacts:
-          path: test-results/pytest
-          destination: pytest
+          path: test-results/vue
+          destination: vue
 
     - store_test_results:
-        path: test-results/pytest     
+        path: test-results/vue    
 
   backend:
     docker:
@@ -55,7 +55,7 @@ jobs:
       - restore_cache:
           keys:
           - nerv-dependencies-{{ checksum "requirements.txt" }}
-          # fallback to using the latest cache if no exact match is found
+          # fallback to using the latest cache if no exact match is found                
           - nerv-dependencies-
       - run:
           name: install dependencies
