@@ -36,7 +36,6 @@ jobs:
     - store_artifacts:
           path: result
           
-
     - store_test_results:
         path: result    
   backend:
