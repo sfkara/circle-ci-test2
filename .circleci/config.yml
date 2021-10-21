@@ -27,7 +27,9 @@ jobs:
     - run:
         name: install npm 
         command: npm install
-
+    - run:
+        name: install jest
+        command: npm install jest --save-dev   
     - save_cache:
         paths:
           - node_modules
