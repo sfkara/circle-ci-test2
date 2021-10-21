@@ -36,11 +36,11 @@ jobs:
         name: Run Frontend Tests
         command: npm run test:unit
     - store_artifacts:
-          path: test-results/vue
-          destination: vue
+          path: result
+          
 
     - store_test_results:
-        path: test-results/vue    
+        path: result    
   backend:
     docker:
 
