@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "jest-html-reporter": "^3.4.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
