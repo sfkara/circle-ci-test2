@@ -19,22 +19,20 @@ jobs:
     - restore_cache:
         keys:
           - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-    - run:
-        name: delete cache modules
-        command: rm -rf node_modules        
+          - v1-dependencies-       
     - run:
         name: install npm 
         command: npm install
-    - run:
-        name: install jest
-        command: npm install jest --save-dev   
     - save_cache:
         paths:
           - node_modules
           - package.json
-        key: v1-dependencies-{{ checksum "package.json" }}
+          - package-lock.json
+        keys: 
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "package-lock.json" }}
       # run tests!
     - run: 
         name: Run Frontend Tests
