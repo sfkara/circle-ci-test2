@@ -12,10 +12,11 @@ jobs:
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-    working_directory: $CIRCLE_WORKING_DIRECTORY/client
+    working_directory: ~/circle-ci-test2/client
 
     steps:
-    - checkout
+    - checkout:
+        path: ~/circle-ci-test2
 
       # Download and cache dependencies
     - restore_cache:
