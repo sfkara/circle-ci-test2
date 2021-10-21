@@ -8,6 +8,10 @@ module.exports = {
             outputName: 'frontend-result.xml',
         },
     ],
+    ["jest-html-reporter", {
+      "pageTitle": "Test Report",
+      "outputPath":"./result/frontend-result.html"
+    }]
 ],
   moduleDirectories:["node_modules","src"]
 // collectCoverage: true,
