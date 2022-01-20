@@ -73,7 +73,15 @@ jobs:
           destination: pytest
 
       - store_test_results:
-          path: test-results/pytest   
+          path: test-results/pytest
+
+  
+  
+    - name: "Upload coverage to Codecov"
+      uses: codecov/codecov-action@v2
+      with:
+        fail_ci_if_error: true
+        token: ${{ sb16facb5-622c-499b-8561-4da1ca902965 }} # not required for public repos
 
 workflows:
   version: 2
